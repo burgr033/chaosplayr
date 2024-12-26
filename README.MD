@@ -18,6 +18,7 @@ chaosplayr is a small CLI tool that displays a searchable list of the last 2 yea
 
 * Prerequsites
     * go >= 1.23.2
+    * mpv (tested with version 0.39.0)
 
 ```bash
   go install github.com/burgr033/chaosplayr/cmd/chaosplayr
