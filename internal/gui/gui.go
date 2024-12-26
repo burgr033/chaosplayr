@@ -58,7 +58,7 @@ func convertFeed(feed []*gofeed.Item) []Item {
 
 func (i Item) Title() string { return i.title }
 func (i Item) Description() string {
-	return i.keywords + "\n" + i.author + " • " + i.duration + " • " + i.pubDate
+	return i.keywords + "\n" + "🎙️" + i.author + " • 🕛️" + i.duration + " • 🗓️" + i.pubDate
 }
 func (i Item) FilterValue() string { return i.title + " " + i.author + " " + i.keywords }
 func (i Item) Summary() string     { return i.summary }
