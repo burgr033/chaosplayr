@@ -14,7 +14,6 @@ func LaunchMPV(videoURL string) {
 	}
 
 	cmd := exec.Command(mpvPath, parameters...)
-	log.Printf("Command to be executed:\n%v %v\n", mpvPath, parameters)
 	err := cmd.Start()
 	if err != nil {
 		log.Fatalf("Failed to start MPV: %v", err)

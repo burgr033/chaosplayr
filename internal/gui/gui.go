@@ -119,7 +119,6 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		if msg.String() == "enter" {
 			i, ok := m.list.SelectedItem().(Item)
 			if ok {
-				log.Printf("starting mpv %v\n", i.link)
 				mpv.LaunchMPV(i.link)
 			}
 			return m, nil
