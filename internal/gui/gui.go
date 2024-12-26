@@ -1,7 +1,6 @@
 package gui
 
 import (
-	"log"
 	"strings"
 
 	"github.com/burgr033/chaosplayr/internal/file"
@@ -47,6 +46,7 @@ func convertFeed(feed []*gofeed.Item) []Item {
 			author:   v.ITunesExt.Author,
 			duration: v.ITunesExt.Duration,
 		}
+		i.UpdateTitle() // Update the title based on favorite status
 		if n == 584 {
 			items = append(items, i)
 		} else {
@@ -56,7 +56,23 @@ func convertFeed(feed []*gofeed.Item) []Item {
 	return items
 }
 
-func (i Item) Title() string { return i.title }
+func (i *Item) UpdateTitle() {
+	isFavorite, err := file.IsInFavorites(i.link)
+	if err != nil {
+		// Handle error if needed
+		return
+	}
+	if isFavorite {
+		i.title = "* " + i.title
+	} else {
+		i.title = strings.TrimPrefix(i.title, "* ")
+	}
+}
+
+func (i Item) Title() string {
+	return i.title
+}
+func (i Item) UpTitle() string { return "XX" + i.title }
 func (i Item) Description() string {
 	return i.keywords + "\n" + "🎙️" + i.author + " • 🕛️" + i.duration + " • 🗓️" + i.pubDate
 }
@@ -102,7 +118,10 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		if msg.String() == "*" {
 			i, ok := m.list.SelectedItem().(Item)
 			if ok {
-				log.Printf("would put it on the list %v\n", i.link)
+				file.ToggleFavorites(i.link)
+				i.UpdateTitle()                   // Update the title based on favorite status
+				m.list.SetItem(m.list.Index(), i) // Update the item in the list
+				return m, nil
 			}
 		}
 		if msg.String() == "." {
@@ -155,3 +174,4 @@ func CreateProgram(rssURL string) (*tea.Program, error) {
 	m := NewModel(items)
 	return tea.NewProgram(m, tea.WithAltScreen()), nil
 }
+
