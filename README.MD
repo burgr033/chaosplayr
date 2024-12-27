@@ -4,16 +4,15 @@ chaosplayr is a small CLI tool that displays a searchable list of the last 2 yea
 
 ## Features
 
-- Search & Filter
-    - Filter a list of videos & authors, and keywords
-- Summary
-    - view summary from video 
+- Search list of videos & authors, and keywords
+- view summary from video
+- Bookmark certain videos in a local list to store
+- caching of the rss feed
+
 
 ## To be implemented
 
-- Bookmark certain videos in a local list to store
-- if mpv has a callback mechanism, we could store watched time in that list and "continue" videos
-- caching of the rss feed 
+- if mpv has a callback mechanism, we could store watched time in that list and "continue" videos 
 - parameters for either sd or hd and mpv command line switches
 
 ## Installation
