@@ -40,6 +40,7 @@ chaosplayr is a small CLI tool that displays a searchable list of the last 2 yea
 ## Contributors
 
 - [@burgr033](https://www.github.com/burgr033)
+- [@katrinleinweber](https://www.github.com/katrinleinweber)
 
 
 ## Contributing
