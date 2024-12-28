@@ -25,6 +25,12 @@ chaosplayr is a small CLI tool that displays a searchable list of the last 2 yea
   go install github.com/burgr033/chaosplayr/cmd/chaosplayr
 ```
 
+### Build locally and run
+
+```bash
+  go build ./cmd/chaosplayr && ./chaosplayr
+```
+
 ## Acknowledgements
 
  - [Bubbletea TUI framework](https://github.com/charmbracelet/bubbletea)
