@@ -1,3 +1,4 @@
+// Deprecated: use codeberg.org/burgr/chaosplayr instead.
 module github.com/burgr033/chaosplayr
 
 go 1.23.4
